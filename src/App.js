@@ -13,8 +13,8 @@ const initContacts = [
 ];
 
 function App() {
-  const [contacts, setContacts] = useState(
-    () => JSON.parse(localStorage.contacts) ?? initContacts,
+  const [contacts, setContacts] = useState(() =>
+    localStorage.contacts ? JSON.parse(localStorage.contacts) : initContacts,
   );
   const [filter, setFilter] = useState('');
 
