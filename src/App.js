@@ -6,13 +6,13 @@ import Filter from './components/Filter';
 import ContactList from './components/ContactList';
 
 function App() {
-  const [contacts, setContacts] = useState(() =>
-    localStorage.contacts ? JSON.parse(localStorage.contacts) : [],
+  const [contacts, setContacts] = useState(
+    () => JSON.parse(localStorage.getItem('contacts')) ?? [],
   );
   const [filter, setFilter] = useState('');
 
   useEffect(() => {
-    localStorage.contacts = JSON.stringify(contacts);
+    localStorage.setItem('contacts', JSON.stringify(contacts));
   }, [contacts]);
 
   const addContact = contact => {
